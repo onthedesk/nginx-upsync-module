@@ -49,7 +49,7 @@ nginx-consul:
 ```nginx-consul
 http {
     upstream test {
-        upsync 127.0.0.1:8500/v1/kv/upstreams/test/ upsync_timeout=6m upsync_interval=500ms upsync_type=consul strong_dependency=off;
+        upsync 127.0.0.1:8500/v1/kv/upstreams/test/?token=${consul_acl_token}&recurse upsync_timeout=6m upsync_interval=500ms upsync_type=consul strong_dependency=off;
         upsync_dump_path /usr/local/nginx/conf/servers/servers_test.conf;
 
         include /usr/local/nginx/conf/servers/servers_test.conf;
